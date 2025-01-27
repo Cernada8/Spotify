@@ -14,7 +14,7 @@ class Perfil
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $fofoto = null;
+    private ?string $foto = null;
 
     #[ORM\Column(length: 255)]
     private ?string $descripcion = null;
@@ -27,14 +27,14 @@ class Perfil
         return $this->id;
     }
 
-    public function getFofoto(): ?string
+    public function getFoto(): ?string
     {
-        return $this->fofoto;
+        return $this->foto;
     }
 
-    public function setFofoto(string $fofoto): static
+    public function setFoto(string $foto): static
     {
-        $this->fofoto = $fofoto;
+        $this->foto = $foto;
 
         return $this;
     }

@@ -31,13 +31,13 @@ class CancionRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Cancion
-    //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function findOneByTitulo($titulo): ?Cancion
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.titulo = :val')
+            ->setParameter('val', $titulo)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }
