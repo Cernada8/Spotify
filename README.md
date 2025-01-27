@@ -3,4 +3,4 @@
 Alejandro Cernada Escudero
 
 
-![Diagrama de clases 1](Imagenes/DiagramaDeClases1.png)
+![Diagrama de clases 1](Imagenes/DiagramaDeClases1.drawio.png)
