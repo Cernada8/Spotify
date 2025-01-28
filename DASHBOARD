@@ -1,0 +1,25 @@
+1. apt-get install zip
+
+2. composer require easycorp/easyadmin-bundle
+
+3. php bin/console cache:clear
+
+4. php bin/console make:admin:dashboard
+
+5. php bin/console make:admin:crud
+
+6.darle permisos y crear carpeta en templates (admin)
+
+7. dentro de la carpeta dashboard.html.twig
+
+8. dentro de ese archivo: 
+    {%extends '@EasyAdmin/page/content.html.twig' %}
+    {% block content %}
+        <h1> Bienvenido al Panel de Administración de Cernada </h1>
+        <p>Usa el menu de la izquierda para gestionar Alumnos</p>
+    {% endblock %}
+    
+9. dentro del dashboardcontroller en la funcion index: 
+    return $this->render('admin/dashboard.html.twig');
+    
+10. dar permisos y abrir servidor
