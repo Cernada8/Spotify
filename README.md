@@ -6,9 +6,9 @@ Alejandro Cernada Escudero
 
 ## PARA COPIAR EL PROYECTO DE 0
 ```
-```bash
 git clone https://github.com/Cernada8/Weight-Progress-PHP.git
 ```
 ## PARA ACTUALIZAR SI YA TIENES EL PROYECTO
-  ```bash
- git pull origin main ```
+```
+ git pull origin main
+```
