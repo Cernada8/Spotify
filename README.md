@@ -5,9 +5,10 @@ Alejandro Cernada Escudero
 ![Diagrama de clases 1](Imagenes/DiagramaDeClases1.drawio.png)
 
 ## PARA COPIAR EL PROYECTO DE 0
-    ```bash
-    git clone
-
+```
+```bash
+git clone https://github.com/Cernada8/Weight-Progress-PHP.git
+```
 ## PARA ACTUALIZAR SI YA TIENES EL PROYECTO
-    ```bash
-    git pull origin main
+  ```bash
+ git pull origin main ```
