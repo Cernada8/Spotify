@@ -25,23 +25,25 @@ class Usuario
     #[ORM\Column(length: 255)]
     private ?string $nombre = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: "datetime", nullable: true, options: ["default" => "CURRENT_TIMESTAMP"])]
     private ?\DateTimeInterface $fechaNacimiento = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Perfil $perfil = null;
 
     /**
      * @var Collection<int, UsuarioPlaylist>
      */
     #[ORM\OneToMany(targetEntity: UsuarioPlaylist::class, mappedBy: 'usuario')]
+    #[ORM\JoinColumn(nullable: true)]
     private Collection $usuarioPlaylists;
 
     /**
      * @var Collection<int, Playlist>
      */
     #[ORM\OneToMany(targetEntity: Playlist::class, mappedBy: 'propietario')]
+    #[ORM\JoinColumn(nullable: true)]
     private Collection $playlists;
 
     public function __construct()

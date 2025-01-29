@@ -26,8 +26,9 @@ class Cancion
 
     #[ORM\Column(length: 255)]
     private ?string $autor = null;
-
-    #[ORM\ManyToOne(inversedBy: 'canciones')]
+    
+    #[ORM\ManyToOne(targetEntity: Estilo::class, inversedBy: 'canciones')]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Estilo $genero = null;
 
     #[ORM\Column]
@@ -40,6 +41,7 @@ class Cancion
      * @var Collection<int, PlaylistCancion>
      */
     #[ORM\OneToMany(targetEntity: PlaylistCancion::class, mappedBy: 'cancion')]
+    #[ORM\JoinColumn(nullable: true)]
     private Collection $playlistCancions;
 
     public function __construct()

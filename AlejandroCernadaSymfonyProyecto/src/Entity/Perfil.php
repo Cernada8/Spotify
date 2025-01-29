@@ -20,6 +20,7 @@ class Perfil
     private ?string $descripcion = null;
 
     #[ORM\ManyToOne(inversedBy: 'perfiles')]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Estilo $estiloMusicalPreferido = null;
 
     public function getId(): ?int

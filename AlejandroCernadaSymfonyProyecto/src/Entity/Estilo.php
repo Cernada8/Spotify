@@ -25,12 +25,14 @@ class Estilo
      * @var Collection<int, Cancion>
      */
     #[ORM\OneToMany(targetEntity: Cancion::class, mappedBy: 'genero')]
+    #[ORM\JoinColumn(nullable: true)]
     private Collection $canciones;
 
     /**
      * @var Collection<int, Perfil>
      */
     #[ORM\OneToMany(targetEntity: Perfil::class, mappedBy: 'estiloMusicalPreferido')]
+    #[ORM\JoinColumn(nullable: true)]
     private Collection $perfiles;
 
     public function __construct()

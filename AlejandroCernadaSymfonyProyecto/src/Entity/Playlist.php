@@ -35,18 +35,20 @@ class Playlist
      * @var Collection<int, UsuarioPlaylist>
      */
     #[ORM\OneToMany(targetEntity: UsuarioPlaylist::class, mappedBy: 'playlist')]
+    #[ORM\JoinColumn(nullable: true)]
     private Collection $usuarioPlaylists;
 
     /**
      * @var Collection<int, PlaylistCancion>
      */
     #[ORM\OneToMany(targetEntity: PlaylistCancion::class, mappedBy: 'playlist')]
-    private Collection $playlistCancions;
+    #[ORM\JoinColumn(nullable: true)]
+    private Collection $playlistCanciones;
 
     public function __construct()
     {
         $this->usuarioPlaylists = new ArrayCollection();
-        $this->playlistCancions = new ArrayCollection();
+        $this->playlistCanciones = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -147,15 +149,15 @@ class Playlist
     /**
      * @return Collection<int, PlaylistCancion>
      */
-    public function getPlaylistCancions(): Collection
+    public function getPlaylistCanciones(): Collection
     {
-        return $this->playlistCancions;
+        return $this->playlistCanciones;
     }
 
     public function addPlaylistCancion(PlaylistCancion $playlistCancion): static
     {
-        if (!$this->playlistCancions->contains($playlistCancion)) {
-            $this->playlistCancions->add($playlistCancion);
+        if (!$this->playlistCanciones->contains($playlistCancion)) {
+            $this->playlistCanciones->add($playlistCancion);
             $playlistCancion->setPlaylist($this);
         }
 
@@ -164,7 +166,7 @@ class Playlist
 
     public function removePlaylistCancion(PlaylistCancion $playlistCancion): static
     {
-        if ($this->playlistCancions->removeElement($playlistCancion)) {
+        if ($this->playlistCanciones->removeElement($playlistCancion)) {
             // set the owning side to null (unless already changed)
             if ($playlistCancion->getPlaylist() === $this) {
                 $playlistCancion->setPlaylist(null);
