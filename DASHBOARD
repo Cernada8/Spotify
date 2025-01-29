@@ -22,4 +22,8 @@
 9. dentro del dashboardcontroller en la funcion index: 
     return $this->render('admin/dashboard.html.twig');
     
-10. dar permisos y abrir servidor
+10. dar permisos
+
+11. php bin/console cache:clear
+
+12. abrir servidor
