@@ -49,7 +49,7 @@ class Usuario
     /**
      * @var Collection<int, Cancion>
      */
-    #[ORM\ManyToMany(targetEntity: Cancion::class, inversedBy: 'usuarios')]
+    #[ORM\ManyToMany(targetEntity: Cancion::class, inversedBy: 'usuarios', cascade:['persist'])]
     private Collection $canciones;
 
     public function __construct()
@@ -206,5 +206,10 @@ class Usuario
         $this->canciones->removeElement($cancione);
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNombre();
     }
 }
