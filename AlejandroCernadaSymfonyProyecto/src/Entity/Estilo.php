@@ -31,9 +31,9 @@ class Estilo
     /**
      * @var Collection<int, Perfil>
      */
-    #[ORM\OneToMany(targetEntity: Perfil::class, mappedBy: 'estiloMusicalPreferido')]
-    #[ORM\JoinColumn(nullable: true)]
+    #[ORM\ManyToMany(targetEntity: Perfil::class, mappedBy: 'estilosPreferidos')]
     private Collection $perfiles;
+
 
     public function __construct()
     {
@@ -51,7 +51,7 @@ class Estilo
         return $this->nombre;
     }
 
-    public function setNombre(string $nombre): static
+    public function setNombre(string $nombre)
     {
         $this->nombre = $nombre;
 
@@ -63,7 +63,7 @@ class Estilo
         return $this->descripcion;
     }
 
-    public function setDescripcion(string $descripcion): static
+    public function setDescripcion(string $descripcion)
     {
         $this->descripcion = $descripcion;
 
@@ -78,7 +78,7 @@ class Estilo
         return $this->canciones;
     }
 
-    public function addCancione(Cancion $cancione): static
+    public function addCancione(Cancion $cancione)
     {
         if (!$this->canciones->contains($cancione)) {
             $this->canciones->add($cancione);
@@ -88,7 +88,7 @@ class Estilo
         return $this;
     }
 
-    public function removeCancione(Cancion $cancione): static
+    public function removeCancione(Cancion $cancione)
     {
         if ($this->canciones->removeElement($cancione)) {
             // set the owning side to null (unless already changed)
@@ -112,7 +112,7 @@ class Estilo
     {
         if (!$this->perfiles->contains($perfile)) {
             $this->perfiles->add($perfile);
-            $perfile->setEstiloMusicalPreferido($this);
+            $perfile->addEstilosPreferido($this);
         }
 
         return $this;
@@ -121,10 +121,7 @@ class Estilo
     public function removePerfile(Perfil $perfile): static
     {
         if ($this->perfiles->removeElement($perfile)) {
-            // set the owning side to null (unless already changed)
-            if ($perfile->getEstiloMusicalPreferido() === $this) {
-                $perfile->setEstiloMusicalPreferido(null);
-            }
+            $perfile->removeEstilosPreferido($this);
         }
 
         return $this;

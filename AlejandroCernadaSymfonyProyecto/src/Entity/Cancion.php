@@ -44,9 +44,16 @@ class Cancion
     #[ORM\JoinColumn(nullable: true)]
     private Collection $playlistCancions;
 
+    /**
+     * @var Collection<int, Usuario>
+     */
+    #[ORM\ManyToMany(targetEntity: Usuario::class, mappedBy: 'canciones')]
+    private Collection $usuarios;
+
     public function __construct()
     {
         $this->playlistCancions = new ArrayCollection();
+        $this->usuarios = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -163,6 +170,33 @@ class Cancion
             if ($playlistCancion->getCancion() === $this) {
                 $playlistCancion->setCancion(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Usuario>
+     */
+    public function getUsuarios(): Collection
+    {
+        return $this->usuarios;
+    }
+
+    public function addUsuario(Usuario $usuario): static
+    {
+        if (!$this->usuarios->contains($usuario)) {
+            $this->usuarios->add($usuario);
+            $usuario->addCancione($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUsuario(Usuario $usuario): static
+    {
+        if ($this->usuarios->removeElement($usuario)) {
+            $usuario->removeCancione($this);
         }
 
         return $this;
