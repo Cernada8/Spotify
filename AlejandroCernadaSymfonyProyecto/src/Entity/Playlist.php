@@ -22,7 +22,7 @@ class Playlist
     private ?string $visibilidad = null;
 
     #[ORM\ManyToOne(inversedBy: 'playlists')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Usuario $propietario = null;
 
     #[ORM\Column]
