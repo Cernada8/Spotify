@@ -24,14 +24,14 @@ class Estilo
     /**
      * @var Collection<int, Cancion>
      */
-    #[ORM\OneToMany(targetEntity: Cancion::class, mappedBy: 'genero')]
+    #[ORM\OneToMany(targetEntity: Cancion::class, mappedBy: 'genero', cascade:['persist'])]
     #[ORM\JoinColumn(nullable: true)]
     private Collection $canciones;
 
     /**
      * @var Collection<int, Perfil>
      */
-    #[ORM\ManyToMany(targetEntity: Perfil::class, mappedBy: 'estilosPreferidos')]
+    #[ORM\ManyToMany(targetEntity: Perfil::class, mappedBy: 'estilosPreferidos', cascade:['persist'])]
     private Collection $perfiles;
 
 

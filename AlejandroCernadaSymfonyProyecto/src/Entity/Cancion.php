@@ -40,7 +40,7 @@ class Cancion
     /**
      * @var Collection<int, PlaylistCancion>
      */
-    #[ORM\OneToMany(targetEntity: PlaylistCancion::class, mappedBy: 'cancion')]
+    #[ORM\OneToMany(targetEntity: PlaylistCancion::class, mappedBy: 'cancion', cascade:['persist'])]
     #[ORM\JoinColumn(nullable: true)]
     private Collection $playlistCancions;
 
