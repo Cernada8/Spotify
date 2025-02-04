@@ -21,7 +21,7 @@ class Playlist
     #[ORM\Column(length: 255)]
     private ?string $visibilidad = null;
 
-    #[ORM\ManyToOne(inversedBy: 'playlists')]
+    #[ORM\ManyToOne(inversedBy: 'playlists', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: true)]
     private ?Usuario $propietario = null;
 

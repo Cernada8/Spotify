@@ -50,7 +50,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Canciones', 'fas fa-list', Cancion::class);
         yield MenuItem::linkToCrud('Estilos', 'fas fa-list', Estilo::class);
         // yield MenuItem::linkToCrud('Perfiles', 'fas fa-list', Perfil::class);
-        // yield MenuItem::linkToCrud('Playlists', 'fas fa-list', Playlist::class);
+        yield MenuItem::linkToCrud('Playlists', 'fas fa-list', Playlist::class);
         // yield MenuItem::linkToCrud('Playlist Cancion', 'fas fa-list', PlaylistCancion::class);
         // yield MenuItem::linkToCrud('Usuarios', 'fas fa-list', Usuario::class);
         // yield MenuItem::linkToCrud('Usuario Playlist', 'fas fa-list', UsuarioPlaylist::class);

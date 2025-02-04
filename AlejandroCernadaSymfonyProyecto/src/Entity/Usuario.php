@@ -42,7 +42,7 @@ class Usuario
     /**
      * @var Collection<int, Playlist>
      */
-    #[ORM\OneToMany(targetEntity: Playlist::class, mappedBy: 'propietario')]
+    #[ORM\OneToMany(targetEntity: Playlist::class, mappedBy: 'propietario', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: true)]
     private Collection $playlists;
 
