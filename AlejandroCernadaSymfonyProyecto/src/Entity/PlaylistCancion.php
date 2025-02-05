@@ -48,5 +48,6 @@ class PlaylistCancion
         $this->cancion = $cancion;
 
         return $this;
-    }
+    
+}
 }

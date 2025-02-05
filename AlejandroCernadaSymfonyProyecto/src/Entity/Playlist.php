@@ -175,4 +175,9 @@ class Playlist
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 }

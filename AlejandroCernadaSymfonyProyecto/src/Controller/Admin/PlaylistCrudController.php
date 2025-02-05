@@ -27,7 +27,6 @@ class PlaylistCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('nombre'),
             TextField::new('visibilidad'),
-            AssociationField::new('propietario', 'Usuario')->setFormTypeOption('by_reference', false),
             IntegerField::new('reproducciones'), 
             IntegerField::new('likes')
         ];
