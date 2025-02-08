@@ -4,8 +4,10 @@ namespace App\Controller\Admin;
 
 use App\Entity\Playlist;
 use App\Entity\Usuario;
+use Doctrine\Common\Collections\Collection;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -28,7 +30,8 @@ class PlaylistCrudController extends AbstractCrudController
             TextField::new('nombre'),
             TextField::new('visibilidad'),
             IntegerField::new('reproducciones'), 
-            IntegerField::new('likes')
+            IntegerField::new('likes'),
+            CollectionField::new('playlistCanciones','Canciones')
         ];
     }
     

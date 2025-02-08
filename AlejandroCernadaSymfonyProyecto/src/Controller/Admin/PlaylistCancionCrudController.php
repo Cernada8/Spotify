@@ -23,7 +23,7 @@ class PlaylistCancionCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            AssociationField::new('playlist', 'Playlist'),
+            AssociationField::new('playlist', 'Playlist')->hideOnForm(),
             AssociationField::new('cancion', 'Cancion')
         ];
     }

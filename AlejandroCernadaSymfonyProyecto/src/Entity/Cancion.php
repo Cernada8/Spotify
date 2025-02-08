@@ -40,14 +40,14 @@ class Cancion
     /**
      * @var Collection<int, PlaylistCancion>
      */
-    #[ORM\OneToMany(targetEntity: PlaylistCancion::class, mappedBy: 'cancion', cascade:['persist'])]
+    #[ORM\OneToMany(targetEntity: PlaylistCancion::class, mappedBy: 'cancion', cascade:['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: true)]
     private Collection $playlistCancions;
 
     /**
      * @var Collection<int, Usuario>
      */
-    #[ORM\ManyToMany(targetEntity: Usuario::class, mappedBy: 'canciones', cascade:['persist'])]
+    #[ORM\ManyToMany(targetEntity: Usuario::class, mappedBy: 'canciones', cascade:['persist', 'remove'])]
     private Collection $usuarios;
 
     public function __construct()

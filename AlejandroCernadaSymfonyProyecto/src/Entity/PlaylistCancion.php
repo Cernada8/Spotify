@@ -13,11 +13,11 @@ class PlaylistCancion
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'playlistCancions')]
+    #[ORM\ManyToOne(inversedBy: 'playlistCancions', cascade: ['persist','remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Playlist $playlist = null;
 
-    #[ORM\ManyToOne(inversedBy: 'playlistCancions')]
+    #[ORM\ManyToOne(inversedBy: 'playlistCancions', cascade: ['persist','remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Cancion $cancion = null;
 
@@ -49,5 +49,10 @@ class PlaylistCancion
 
         return $this;
     
+}
+
+public function __toString()
+{
+    return $this->getCancion()->getTitulo();
 }
 }

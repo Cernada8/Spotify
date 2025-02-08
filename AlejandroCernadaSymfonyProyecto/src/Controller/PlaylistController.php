@@ -38,4 +38,21 @@ final class PlaylistController extends AbstractController
             'path' => 'src/Controller/EstiloController.php',
         ]);
     }
+
+    #[Route('/playlist/mostrarTodas', name:'mostrar_todas_playlists')]
+    public function mostrarCanciones(EntityManagerInterface $e)
+    {
+        $playlistRep = $e->getRepository(Playlist::class);
+        $playlists = $playlistRep->findAll();
+
+        $data=[];
+        foreach($playlists as $playlist){
+            $data[]=[
+                'nombre'=>$playlist->getNombre()
+            ];
+        }
+
+        // Retorna la respuesta en JSON
+        return $this->json($data);
+    }
 }

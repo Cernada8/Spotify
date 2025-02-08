@@ -5,6 +5,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Cancion;
 use App\Entity\Estilo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -40,4 +41,35 @@ final class CancionController extends AbstractController
             'path' => 'src/Controller/EstiloController.php',
         ]);
     }
+
+    #[Route('/cancion/mostrarTodas', name:'mostrar_todas_caniones')]
+    public function mostrarCanciones(EntityManagerInterface $e)
+    {
+        $cancionRep = $e->getRepository(Cancion::class);
+        $canciones = $cancionRep->findAll();
+
+        $data=[];
+        foreach($canciones as $cancion){
+            $data[]=[
+                'titulo'=>$cancion->getTitulo(),
+                'id'=>$cancion->getId(),
+                'autor'=>$cancion->getAutor()
+            ];
+        }
+
+        // Retorna la respuesta en JSON
+        return $this->json($data);
+    }
+
+    #[Route('cancion/{id}', name:'ruta_cancion')]
+    public function buscarCanciones(EntityManagerInterface $e, $id)
+    {
+        $cancionRep = $e->getRepository(Cancion::class);
+        $cancion=$cancionRep->find($id);
+
+        $ruta='music/'.$id.'.mp3';
+
+        return new BinaryFileResponse($ruta);
+    }
+
 }

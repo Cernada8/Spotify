@@ -40,4 +40,10 @@ class CancionRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    // public function findAll(): array{
+    //     return $this->createQueryBuilder('e')
+    //         ->getQuery()
+    //         ->getResult();
+    // }
 }
