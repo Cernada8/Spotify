@@ -53,7 +53,8 @@ final class CancionController extends AbstractController
             $data[]=[
                 'titulo'=>$cancion->getTitulo(),
                 'id'=>$cancion->getId(),
-                'autor'=>$cancion->getAutor()
+                'autor'=>$cancion->getAutor(),
+                'foto'=>$cancion->getFoto()
             ];
         }
 

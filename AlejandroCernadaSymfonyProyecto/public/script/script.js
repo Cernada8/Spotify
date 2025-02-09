@@ -6,7 +6,11 @@ let recomendados=document.getElementById('recomendados');
 fetch('/cancion/mostrarTodas').then(response=>response.json()).then(canciones=>{
     for (const cancion of canciones) {
         let img=document.createElement('img');
-        img.src='../images/cover.png';
+        if(cancion.foto==null){
+            img.src='images/cover.png';
+        }else{
+            img.src=cancion.foto;
+        }
 
         let divCancion=document.createElement('div');
         divCancion.classList.add('cancion');

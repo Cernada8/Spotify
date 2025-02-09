@@ -50,6 +50,9 @@ class Cancion
     #[ORM\ManyToMany(targetEntity: Usuario::class, mappedBy: 'canciones', cascade:['persist', 'remove'])]
     private Collection $usuarios;
 
+    #[ORM\Column(length: 255)]
+    private ?string $foto = null;
+
     public function __construct()
     {
         $this->playlistCancions = new ArrayCollection();
@@ -205,5 +208,17 @@ class Cancion
     public function __toString()
     {
         return $this->getTitulo();
+    }
+
+    public function getFoto(): ?string
+    {
+        return $this->foto;
+    }
+
+    public function setFoto(string $foto): static
+    {
+        $this->foto = $foto;
+
+        return $this;
     }
 }
