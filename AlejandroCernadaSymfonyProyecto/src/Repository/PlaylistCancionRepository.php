@@ -40,4 +40,13 @@ class PlaylistCancionRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findAllCancionesByPlaylist($playlist){
+        return $this->createQueryBuilder('p')
+               ->andWhere('p.playlist = :val')
+               ->setParameter('val', $playlist)
+               ->getQuery()
+               ->getResult()
+           ;
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\PlaylistCancionController;
 use App\Entity\Playlist;
 use App\Entity\Usuario;
 use Doctrine\Common\Collections\Collection;
@@ -12,7 +13,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-
 
 
 class PlaylistCrudController extends AbstractCrudController
@@ -26,12 +26,12 @@ class PlaylistCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
+            IdField::new('id'),
             TextField::new('nombre'),
             TextField::new('visibilidad'),
             IntegerField::new('reproducciones'), 
             IntegerField::new('likes'),
-            CollectionField::new('playlistCanciones','Canciones')
+            CollectionField::new('playlistCanciones','Canciones')->useEntryCrudForm(PlaylistCancionCrudController::class)
         ];
     }
     

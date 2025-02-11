@@ -1,4 +1,41 @@
-let canciones=document.querySelectorAll('.cancion');
+let playlistsAnadir=document.getElementById('playlistsAnadir');
+
+anadirPlaylist(playlistsAnadir)
+function anadirPlaylist(contenedor){
+    fetch('/playlist/mostrarTodas').then(response=>response.json()).then(playlists=>{
+        for (const playlist of playlists) {
+            let img=document.createElement('img');
+            img.src='../images/cover.png';
+
+            let divCancion=document.createElement('div');
+            divCancion.classList.add('cancion');
+
+            divCancion.addEventListener('click',()=>{
+                fetch(`/getCanciones/${playlist.nombre}`).then(response=>response.json()).then(cancionesDePlaylist=>{
+                    
+                    for (const c of cancionesDePlaylist) {
+                        console.log(c.titulo);
+                    }
+
+                });
+            })
+
+            let divNombreCancion=document.createElement('div');
+            let nombreCancion2=document.createElement('p');
+            nombreCancion2.classList.add('nombre-cancion');
+            nombreCancion2.textContent=playlist.nombre;
+
+            divNombreCancion.appendChild(nombreCancion2);
+            divNombreCancion.classList.add='cancionActual'
+
+            divCancion.appendChild(img);
+            divCancion.appendChild(divNombreCancion);
+            
+            contenedor.appendChild(divCancion);
+        }
+    });
+}
+
 let cancionActual=document.getElementById('cancionActual');
 let footer=document.querySelector('footer');
 let recomendados=document.getElementById('recomendados');

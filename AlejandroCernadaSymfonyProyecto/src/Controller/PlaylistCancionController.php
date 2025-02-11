@@ -22,14 +22,15 @@ final class PlaylistCancionController extends AbstractController
     }
 
     #[Route('/playlistCancion/new', name: 'newCancion')]
-    public function crearEstilo(EntityManagerInterface $e){
-        $cancionRep=$e->getRepository(Cancion::class);
-        $cancion=$cancionRep->findOneByTitulo('Quedate');
+    public function crearEstilo(EntityManagerInterface $e)
+    {
+        $cancionRep = $e->getRepository(Cancion::class);
+        $cancion = $cancionRep->findOneByTitulo('Quedate');
 
-        $playlistRep=$e->getRepository(Playlist::class);
-        $playlist=$playlistRep->findOneByNombre('P1');
+        $playlistRep = $e->getRepository(Playlist::class);
+        $playlist = $playlistRep->findOneByNombre('P1');
 
-        $playlistCancion=new PlaylistCancion();
+        $playlistCancion = new PlaylistCancion();
         $playlistCancion->setCancion($cancion);
         $playlistCancion->setPlaylist($playlist);
         $e->persist($playlistCancion);
@@ -39,5 +40,25 @@ final class PlaylistCancionController extends AbstractController
             'message' => 'PlaylistCancion creada!',
             'path' => 'src/Controller/EstiloController.php',
         ]);
+    }
+
+    #[Route('/getCanciones/{nombre}', name: 'mostrar_todas_canciones_de_playlist')]
+    public function mostrarCancionesDePlaylist(EntityManagerInterface $e, $nombre)
+    {
+        $playlistCRep = $e->getRepository(PlaylistCancion::class);
+        $playlistRep = $e->getRepository(Playlist::class);
+        $playlist = $playlistRep->findOneByNombre($nombre);
+
+        $cancionesDePlaylist = $playlistCRep->findAllCancionesByPlaylist($playlist);
+
+        $data = [];
+        foreach ($cancionesDePlaylist as $cancion) {
+            $data[] = [
+                'titulo' => $cancion->getCancion()->getTitulo(),
+                'autor' => $cancion->getCancion()->getAutor(),
+            ];
+        }
+
+        return $this->json($data);
     }
 }
