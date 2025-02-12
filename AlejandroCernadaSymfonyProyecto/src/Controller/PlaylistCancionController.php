@@ -56,6 +56,8 @@ final class PlaylistCancionController extends AbstractController
             $data[] = [
                 'titulo' => $cancion->getCancion()->getTitulo(),
                 'autor' => $cancion->getCancion()->getAutor(),
+                'id'=>$cancion->getCancion()->getId(),
+                'foto'=>$cancion->getCancion()->getFoto()
             ];
         }
 

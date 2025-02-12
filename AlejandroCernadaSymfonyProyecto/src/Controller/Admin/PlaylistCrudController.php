@@ -26,7 +26,7 @@ class PlaylistCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id')->hideOnForm(),
             TextField::new('nombre'),
             TextField::new('visibilidad'),
             IntegerField::new('reproducciones'), 
