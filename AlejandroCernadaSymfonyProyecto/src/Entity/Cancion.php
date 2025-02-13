@@ -50,7 +50,7 @@ class Cancion
     #[ORM\ManyToMany(targetEntity: Usuario::class, mappedBy: 'canciones', cascade:['persist', 'remove'])]
     private Collection $usuarios;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable:true)]
     private ?string $foto = null;
 
     public function __construct()
