@@ -57,7 +57,9 @@ final class PlaylistCancionController extends AbstractController
                 'titulo' => $cancion->getCancion()->getTitulo(),
                 'autor' => $cancion->getCancion()->getAutor(),
                 'id'=>$cancion->getCancion()->getId(),
-                'foto'=>$cancion->getCancion()->getFoto()
+                'foto'=>$cancion->getCancion()->getFoto(),
+                'id' => $cancion->getCancion()->getId(),
+
             ];
         }
 

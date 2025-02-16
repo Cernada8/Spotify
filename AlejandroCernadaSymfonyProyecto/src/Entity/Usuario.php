@@ -7,9 +7,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
+
+
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 #[ORM\Entity(repositoryClass: UsuarioRepository::class)]
-class Usuario
+class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,6 +26,12 @@ class Usuario
 
     #[ORM\Column(length: 255)]
     private ?string $password = null;
+
+    /**
+     * @var list<string> The user roles
+     */
+    #[ORM\Column]
+    private array $roles = [];
 
     #[ORM\Column(length: 255)]
     private ?string $nombre = null;
@@ -49,8 +60,10 @@ class Usuario
     /**
      * @var Collection<int, Cancion>
      */
-    #[ORM\ManyToMany(targetEntity: Cancion::class, inversedBy: 'usuarios', cascade:['persist'])]
+    #[ORM\ManyToMany(targetEntity: Cancion::class, inversedBy: 'usuarios', cascade: ['persist'])]
     private Collection $canciones;
+
+
 
     public function __construct()
     {
@@ -206,6 +219,38 @@ class Usuario
         $this->canciones->removeElement($cancione);
 
         return $this;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     *
+     * @return list<string>
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        return array_unique($roles);
+    }
+
+    /**
+     * @param list<string> $roles
+     */
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function __toString()

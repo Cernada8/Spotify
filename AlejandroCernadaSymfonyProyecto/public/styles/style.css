@@ -71,6 +71,10 @@ header{
     height: 4em;
 }
 
+ #cerrarSesion{
+    margin-right: -32em;
+ }
+
 svg{
     height: 1.8em;
 }
