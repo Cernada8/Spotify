@@ -19,9 +19,7 @@ function anadirPlaylist(contenedor){
                 textoPlaylist.innerHTML='';
                 let texto=document.getElementById('texto');
                 texto.innerHTML=`<h2>Tus canciones de la playlist</h2> ${playlist.nombre}`; 
-                fetch(`/getCanciones/${playlist.nombre}`).then(response=>response.json()).then(cancionesDePlaylist=>{
-                    
-<<<<<<< HEAD
+                fetch(`/getCanciones/${playlist.nombre}`).then(response=>response.json()).then(cancionesDePlaylist=>{                  
                     for (const c of cancionesDePlaylist) {     
                         let img=document.createElement('img');
                         if(c.foto==null){
@@ -61,14 +59,12 @@ function anadirPlaylist(contenedor){
                         divCancion.appendChild(divNombreCancion);
                         
                         recomendados.appendChild(divCancion);
-=======
+
                     for (const c of cancionesDePlaylist) {
                         console.log(c.titulo);
-                        
->>>>>>> e2b8c36 (Autorizacion)
                     }
 
-                });
+                }});
             })
 
             let divNombreCancion=document.createElement('div');
