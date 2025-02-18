@@ -19,18 +19,31 @@ document.addEventListener("DOMContentLoaded", function () {
                         borderWidth: 1
                     }]
                 },
-                options: {
+                options: { 
                     responsive: true,
                     scales: { 
                         x: { 
-                            ticks: { color: '#FF5733' }  // Color de los labels del eje X
+                            ticks: { color: 'yellow' }
                         },
                         y: { 
                             beginAtZero: true,
-                            ticks: { color: '#33FF57' }  // Color de los labels del eje Y
+                            ticks: { color: 'yellow' }
+                        }
+                    },
+                    plugins: { 
+                        legend: {
+                            labels: {
+                                color: 'white',
+                                font: {
+                                    size: 16, 
+                                    weight: 'bold'
+                                },
+                                padding: 20
+                            }
                         }
                     }
-            }});
+                }
+            });
         });
 
     // Reproducciones por playlist (Cambio a línea para mostrar tendencia)
@@ -54,18 +67,31 @@ document.addEventListener("DOMContentLoaded", function () {
                         fill: true
                     }]
                 },
-                options: {
+                options: { 
                     responsive: true,
                     scales: { 
                         x: { 
-                            ticks: { color: '#FF5733' }  // Color de los labels del eje X
+                            ticks: { color: 'yellow' }
                         },
                         y: { 
                             beginAtZero: true,
-                            ticks: { color: '#33FF57' }  // Color de los labels del eje Y
+                            ticks: { color: 'yellow' }
+                        }
+                    },
+                    plugins: { 
+                        legend: {
+                            labels: {
+                                color: 'white',
+                                font: {
+                                    size: 16, 
+                                    weight: 'bold'
+                                },
+                                padding: 20
+                            }
                         }
                     }
-            }});
+                }
+            });
         });
 
     // Rango de edades (Cambio a Pie Chart para ver proporciones)
@@ -87,18 +113,31 @@ document.addEventListener("DOMContentLoaded", function () {
                         borderWidth: 1
                     }]
                 },
-                options: {
+                options: { 
                     responsive: true,
                     scales: { 
                         x: { 
-                            ticks: { color: '#FF5733' }  // Color de los labels del eje X
+                            ticks: { color: 'yellow' }
                         },
                         y: { 
                             beginAtZero: true,
-                            ticks: { color: '#33FF57' }  // Color de los labels del eje Y
+                            ticks: { color: 'yellow' }
+                        }
+                    },
+                    plugins: { 
+                        legend: {
+                            labels: {
+                                color: 'white',
+                                font: {
+                                    size: 16, 
+                                    weight: 'bold'
+                                },
+                                padding: 20
+                            }
                         }
                     }
-            }});
+                }
+            });
         });
 
     // Reproducciones por canción (Cambio a línea para mostrar tendencia)
@@ -122,18 +161,31 @@ document.addEventListener("DOMContentLoaded", function () {
                         fill: true
                     }]
                 },
-                options: {
+                options: { 
                     responsive: true,
                     scales: { 
                         x: { 
-                            ticks: { color: '#FF5733' }  // Color de los labels del eje X
+                            ticks: { color: 'yellow' }
                         },
                         y: { 
                             beginAtZero: true,
-                            ticks: { color: '#33FF57' }  // Color de los labels del eje Y
+                            ticks: { color: 'yellow' }
+                        }
+                    },
+                    plugins: { 
+                        legend: {
+                            labels: {
+                                color: 'white',
+                                font: {
+                                    size: 16, 
+                                    weight: 'bold'
+                                },
+                                padding: 20
+                            }
                         }
                     }
-            }});
+                }
+            });
         });
 
     // Reproducciones por estilo (Cambio a Doughnut para proporciones)
@@ -155,17 +207,30 @@ document.addEventListener("DOMContentLoaded", function () {
                         borderWidth: 1
                     }]
                 },
-                options: {
+                options: { 
                     responsive: true,
                     scales: { 
                         x: { 
-                            ticks: { color: '#FF5733' }  // Color de los labels del eje X
+                            ticks: { color: 'yellow' }
                         },
                         y: { 
                             beginAtZero: true,
-                            ticks: { color: '#33FF57' }  // Color de los labels del eje Y
+                            ticks: { color: 'yellow' }
+                        }
+                    },
+                    plugins: { 
+                        legend: {
+                            labels: {
+                                color: 'white',
+                                font: {
+                                    size: 16, 
+                                    weight: 'bold'
+                                },
+                                padding: 20
+                            }
                         }
                     }
-            }});
+                }
+            });
         });
 });
