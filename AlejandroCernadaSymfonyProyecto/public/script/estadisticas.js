@@ -21,9 +21,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 options: {
                     responsive: true,
-                    scales: { y: { beginAtZero: true } }
-                }
-            });
+                    scales: { 
+                        x: { 
+                            ticks: { color: '#FF5733' }  // Color de los labels del eje X
+                        },
+                        y: { 
+                            beginAtZero: true,
+                            ticks: { color: '#33FF57' }  // Color de los labels del eje Y
+                        }
+                    }
+            }});
         });
 
     // Reproducciones por playlist (Cambio a línea para mostrar tendencia)
@@ -49,9 +56,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 options: {
                     responsive: true,
-                    scales: { y: { beginAtZero: true } }
-                }
-            });
+                    scales: { 
+                        x: { 
+                            ticks: { color: '#FF5733' }  // Color de los labels del eje X
+                        },
+                        y: { 
+                            beginAtZero: true,
+                            ticks: { color: '#33FF57' }  // Color de los labels del eje Y
+                        }
+                    }
+            }});
         });
 
     // Rango de edades (Cambio a Pie Chart para ver proporciones)
@@ -74,9 +88,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     }]
                 },
                 options: {
-                    responsive: true
-                }
-            });
+                    responsive: true,
+                    scales: { 
+                        x: { 
+                            ticks: { color: '#FF5733' }  // Color de los labels del eje X
+                        },
+                        y: { 
+                            beginAtZero: true,
+                            ticks: { color: '#33FF57' }  // Color de los labels del eje Y
+                        }
+                    }
+            }});
         });
 
     // Reproducciones por canción (Cambio a línea para mostrar tendencia)
@@ -102,9 +124,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 options: {
                     responsive: true,
-                    scales: { y: { beginAtZero: true } }
-                }
-            });
+                    scales: { 
+                        x: { 
+                            ticks: { color: '#FF5733' }  // Color de los labels del eje X
+                        },
+                        y: { 
+                            beginAtZero: true,
+                            ticks: { color: '#33FF57' }  // Color de los labels del eje Y
+                        }
+                    }
+            }});
         });
 
     // Reproducciones por estilo (Cambio a Doughnut para proporciones)
@@ -127,8 +156,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     }]
                 },
                 options: {
-                    responsive: true
-                }
-            });
+                    responsive: true,
+                    scales: { 
+                        x: { 
+                            ticks: { color: '#FF5733' }  // Color de los labels del eje X
+                        },
+                        y: { 
+                            beginAtZero: true,
+                            ticks: { color: '#33FF57' }  // Color de los labels del eje Y
+                        }
+                    }
+            }});
         });
 });
