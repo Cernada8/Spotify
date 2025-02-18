@@ -31,13 +31,23 @@ class EstiloRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-       public function findOneByNombre($nombre): ?Estilo
-       {
-           return $this->createQueryBuilder('e')
-               ->andWhere('e.nombre = :val')
-               ->setParameter('val', $nombre)
-               ->getQuery()
-               ->getOneOrNullResult()
-           ;
-       }
+    public function findOneByNombre($nombre): ?Estilo
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.nombre = :val')
+            ->setParameter('val', $nombre)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    public function reproduccionesPorEstilo()
+    {
+        return $this->createQueryBuilder('e')
+            ->select('e.nombre, SUM(c.reproducciones) AS totalReproducciones')
+            ->join('e.canciones', 'c') // Suponiendo que la relación entre Estilo y Canción es e.canciones
+            ->groupBy('e.id')
+            ->getQuery()
+            ->getResult();
+    }
 }

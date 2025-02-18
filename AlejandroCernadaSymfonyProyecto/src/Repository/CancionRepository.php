@@ -41,9 +41,17 @@ class CancionRepository extends ServiceEntityRepository
         ;
     }
 
+    public function mostrarCancionesReproducciones()
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p.titulo, p.reproducciones')
+            ->getQuery()
+            ->getResult();
+    }
+}
+
     // public function findAll(): array{
     //     return $this->createQueryBuilder('e')
     //         ->getQuery()
     //         ->getResult();
     // }
-}

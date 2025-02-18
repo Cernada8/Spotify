@@ -40,4 +40,18 @@ class PlaylistRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function mostrarPlaylistLikes(){
+        return $this->createQueryBuilder('p')
+            ->select('p.nombre, p.likes')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function mostrarPlaylistReproducciones(){
+        return $this->createQueryBuilder('p')
+            ->select('p.nombre, p.reproducciones')
+            ->getQuery()
+            ->getResult();
+    }
 }
