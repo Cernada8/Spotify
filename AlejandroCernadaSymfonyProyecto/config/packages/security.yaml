@@ -30,6 +30,7 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/estadisticas, roles: ROLE_MANAGER }
 
 # Definir la ruta del logout en routes.yaml para evitar errores
 when@test:

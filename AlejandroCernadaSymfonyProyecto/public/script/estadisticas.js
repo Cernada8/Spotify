@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         label: 'Total Likes',
                         data: values,
                         backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderColor: 'rgb(0, 238, 255)',
                         borderWidth: 1
                     }]
                 },
@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     responsive: true,
                     scales: { 
                         x: { 
-                            ticks: { color: 'yellow' }
+                            ticks: { color: 'white' }
                         },
                         y: { 
                             beginAtZero: true,
-                            ticks: { color: 'yellow' }
+                            ticks: { color: 'white' }
                         }
                     },
                     plugins: { 
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         label: 'Total Reproducciones',
                         data: values,
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderColor: 'rgb(247, 0, 255)',
                         borderWidth: 2,
                         fill: true
                     }]
@@ -71,11 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     responsive: true,
                     scales: { 
                         x: { 
-                            ticks: { color: 'yellow' }
+                            ticks: { color: 'white' }
                         },
                         y: { 
                             beginAtZero: true,
-                            ticks: { color: 'yellow' }
+                            ticks: { color: 'white' }
                         }
                     },
                     plugins: { 
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     datasets: [{
                         label: 'Distribución de edades',
                         data: values,
-                        backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0', '#9966ff'],
+                        backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', 'rgba(0, 255, 13, 0.47)', '#9966ff'],
                         borderWidth: 1
                     }]
                 },
@@ -117,11 +117,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     responsive: true,
                     scales: { 
                         x: { 
-                            ticks: { color: 'yellow' }
+                            ticks: { color: 'white' }
                         },
                         y: { 
                             beginAtZero: true,
-                            ticks: { color: 'yellow' }
+                            ticks: { color: 'white' }
                         }
                     },
                     plugins: { 
@@ -155,8 +155,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     datasets: [{
                         label: 'Total Reproducciones',
                         data: values,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(0, 255, 13, 0.47)',
+                        borderColor: 'rgb(0, 247, 255)',
                         borderWidth: 2,
                         fill: true
                     }]
@@ -165,11 +165,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     responsive: true,
                     scales: { 
                         x: { 
-                            ticks: { color: 'yellow' }
+                            ticks: { color: 'white' }
                         },
                         y: { 
                             beginAtZero: true,
-                            ticks: { color: 'yellow' }
+                            ticks: { color: 'white' }
                         }
                     },
                     plugins: { 
@@ -211,11 +211,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     responsive: true,
                     scales: { 
                         x: { 
-                            ticks: { color: 'yellow' }
+                            ticks: { color: 'white' }
                         },
                         y: { 
                             beginAtZero: true,
-                            ticks: { color: 'yellow' }
+                            ticks: { color: 'white' }
                         }
                     },
                     plugins: { 
