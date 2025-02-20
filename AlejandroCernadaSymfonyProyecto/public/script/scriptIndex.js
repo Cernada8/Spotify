@@ -1,6 +1,8 @@
 let playlistsAnadir = document.getElementById('playlistsAnadir');
 let contenedorTodo = document.getElementById('canciones');
 
+let buscar= document.querySelector('input');
+
 
 anadirPlaylist(playlistsAnadir)
 function anadirPlaylist(contenedor) {
@@ -130,4 +132,14 @@ fetch('/cancion/mostrarTodas').then(response => response.json()).then(canciones 
 
         recomendados.appendChild(divCancion);
     }
+});
+
+//fetch de todas las canciones y playlists (todas o solo las suyas???) ***
+buscar.addEventListener('input',()=>{
+
+    //Bucle de las canciones y las playlists
+
+        //if (includes)
+            //Las pintas en la pantalla
+
 });
