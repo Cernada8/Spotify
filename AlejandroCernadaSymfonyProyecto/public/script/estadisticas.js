@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     datasets: [{
                         label: 'Total Reproducciones',
                         data: values,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgb(247, 0, 255)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgb(0, 238, 255)',
                         borderWidth: 2,
                         fill: true
                     }]
@@ -155,8 +155,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     datasets: [{
                         label: 'Total Reproducciones',
                         data: values,
-                        backgroundColor: 'rgba(0, 255, 13, 0.47)',
-                        borderColor: 'rgb(0, 247, 255)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgb(0, 238, 255)',
                         borderWidth: 2,
                         fill: true
                     }]
