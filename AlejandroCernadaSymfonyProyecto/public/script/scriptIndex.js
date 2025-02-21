@@ -134,7 +134,9 @@ fetch('/cancion/mostrarTodas').then(response => response.json()).then(canciones 
     }
 });
 
-//fetch de todas las canciones y playlists (todas o solo las suyas???) ***
+
+//HACER FORM DE PLAYLIST
+//fetch de todas las canciones y playlists (todas)
 buscar.addEventListener('input',()=>{
 
     //Bucle de las canciones y las playlists
