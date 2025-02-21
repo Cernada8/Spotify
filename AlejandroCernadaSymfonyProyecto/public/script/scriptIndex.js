@@ -134,10 +134,10 @@ fetch('/cancion/mostrarTodas').then(response => response.json()).then(canciones 
     }
 });
 
-
-//HACER FORM DE PLAYLIST
+//AÑADIR METODO DE GETPLAYLIST POR USUARIO
+//HACER FORM DE PLAYLIST --> boton para hacerlas
 //fetch de todas las canciones y playlists (todas)
-buscar.addEventListener('input',()=>{
+buscar.addEventListener('input',()=>{ //En vez de input, cada vez que pare de escribir
 
     //Bucle de las canciones y las playlists
 
