@@ -240,7 +240,7 @@ buscar.addEventListener('input', () => { //En vez de input, cada vez que pare de
         recomendados.innerHTML='';
         playlistsAnadir.innerHTML='';
         if (buscando != "") {
-            
+            let yaEnsenadas=[];
 
             //Bucle de las canciones y las playlists
             for (const obj of todo) {
@@ -249,8 +249,10 @@ buscar.addEventListener('input', () => { //En vez de input, cada vez que pare de
                 let playlistNombre = obj.playlist.nombre.toLowerCase();
                 let cancion = obj.cancion;
                 let playlist = obj.playlist;
+                
 
-                if (cancionNombre.includes(buscando)) {
+                if (cancionNombre.includes(buscando) && !yaEnsenadas.includes(cancionNombre)) {
+                    yaEnsenadas.push(cancionNombre);
                     let img = document.createElement('img');
                     if (cancion.foto == null) {
                         img.src = 'images/cover.png';
@@ -291,7 +293,8 @@ buscar.addEventListener('input', () => { //En vez de input, cada vez que pare de
                     recomendados.appendChild(divCancion);
                 }
 
-                if (playlistNombre.includes(buscando)) {
+                if (playlistNombre.includes(buscando) && !yaEnsenadas.includes(playlistNombre)) {
+                    yaEnsenadas.push(playlistNombre);
                     let img = document.createElement('img');
                     img.src = '../images/cover.png';
 
