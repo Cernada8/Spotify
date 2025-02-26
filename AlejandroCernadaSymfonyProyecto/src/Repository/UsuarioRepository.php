@@ -46,6 +46,16 @@ class UsuarioRepository extends ServiceEntityRepository implements
         ;
     }
 
+    public function findOneByEmail($email): ?Usuario
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email = :val')
+            ->setParameter('val', $email)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     public function usuarioEdad()
     {
         return $this->createQueryBuilder('u')

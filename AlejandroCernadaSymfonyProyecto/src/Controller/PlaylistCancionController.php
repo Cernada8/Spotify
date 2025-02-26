@@ -56,13 +56,40 @@ final class PlaylistCancionController extends AbstractController
             $data[] = [
                 'titulo' => $cancion->getCancion()->getTitulo(),
                 'autor' => $cancion->getCancion()->getAutor(),
-                'id'=>$cancion->getCancion()->getId(),
-                'foto'=>$cancion->getCancion()->getFoto(),
+                'id' => $cancion->getCancion()->getId(),
+                'foto' => $cancion->getCancion()->getFoto(),
                 'id' => $cancion->getCancion()->getId(),
 
             ];
         }
 
         return $this->json($data);
+    }
+
+    #[Route('/getCancionesYPlaylists', name: 'canciones_playlists')]
+    public function cancionesYPlaylists(EntityManagerInterface $e)
+    {
+        $CancionPlayRep = $e->getRepository(PlaylistCancion::class);
+        $data = $CancionPlayRep->getCancionesYPlaylist();
+        $json = [];
+
+        foreach ($data as $d) {
+            $json[] = [
+                'cancion' => [
+                    'titulo' => $d->getCancion()->getTitulo(),
+                    'autor' => $d->getCancion()->getAutor(),
+                    'id' => $d->getCancion()->getId(),
+                    'foto' => $d->getCancion()->getFoto(),
+                    'id' => $d->getCancion()->getId(),
+                ],
+                'playlist'=>[
+                    'nombre' => $d->getPlaylist()->getNombre(),
+                    'propietario' => $d->getPlaylist()->getPropietario(),
+                    'id' => $d->getPlaylist()->getId(),
+                ]
+            ];
+        }
+
+        return $this->json($json);
     }
 }

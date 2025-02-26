@@ -58,15 +58,15 @@ header{
 
     }
 
-    button{
-        cursor: pointer;
-
-        &:hover{
-            scale: 1.03;
-        }
-    }
 }
 
+button{
+    cursor: pointer;
+
+    &:hover{
+        scale: 1.03;
+    }
+}
 #acceso{
     height: 4em;
 }
@@ -131,7 +131,7 @@ nav{
 }
 }
 
-#recomendados, #playlistsAnadir{
+#recomendados, #playlistsAnadir, #tusPlaylist{
     display: grid;
     grid-template-columns:repeat(auto-fill, minmax(15em, 1fr)); ;
     column-gap: 12em;
@@ -212,3 +212,22 @@ h2{
     font-size: 2em;
 }
 
+#crearPlaylist{
+    font-size: 5em;
+    background-color: rgb(255, 251, 0);
+    color: #121212;
+    border-radius: 9999px;
+    width: 1.7em;
+    height: 1.7em;
+    border: none;
+    margin-top: .4em;
+    box-shadow: 0 0 20px rgb(255, 251, 0);
+
+    a{
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}

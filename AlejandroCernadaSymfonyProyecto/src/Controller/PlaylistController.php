@@ -6,6 +6,7 @@ use App\Entity\Playlist;
 use App\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class PlaylistController extends AbstractController
@@ -43,7 +44,29 @@ final class PlaylistController extends AbstractController
     public function mostrarCanciones(EntityManagerInterface $e)
     {
         $playlistRep = $e->getRepository(Playlist::class);
-        $playlists = $playlistRep->findAll();
+        $playlists = $playlistRep->mostrarTodasSistema();
+
+        $data=[];
+        foreach($playlists as $playlist){
+            $data[]=[
+                'nombre'=>$playlist->getNombre()
+            ];
+        }
+
+        // Retorna la respuesta en JSON
+        return $this->json($data);
+    }
+
+    #[Route('/playlist/mostrarPorUsuario', name:'mostrar_playlist_usuario')]
+    public function mostarPorUsuaio(EntityManagerInterface $e, Request $request)
+    {
+        $session=$request->getSession();
+        $email=$session->get('_security.last_username');
+        $usuarioRep=$e->getRepository(Usuario::class);
+        $usuario=$usuarioRep->findOneByEmail($email);
+
+        $playlistRep = $e->getRepository(Playlist::class);
+        $playlists = $playlistRep->mostrarPorUsuario($usuario);
 
         $data=[];
         foreach($playlists as $playlist){

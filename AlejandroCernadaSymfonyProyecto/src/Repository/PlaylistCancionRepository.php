@@ -49,4 +49,11 @@ class PlaylistCancionRepository extends ServiceEntityRepository
                ->getResult()
            ;
     }
+
+    public function getCancionesYPlaylist(){
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->getQuery()
+            ->getResult();
+    }
 }

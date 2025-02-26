@@ -1,0 +1,197 @@
+{{ form_start(form, {'attr': {'class': 'form-profesional'}}) }}
+    <div class="form-header">
+        <h2>Crear Nueva Playlist</h2>
+    </div>
+
+    <div class="form-row">
+        {{ form_label(form.nombre) }}
+        {{ form_widget(form.nombre, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-row">
+        {{ form_label(form.visibilidad) }}
+        {{ form_widget(form.visibilidad, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-section">
+        <h3>Canciones</h3>
+        <div id="canciones" 
+             data-prototype="{{ form_widget(form.playlistCanciones.vars.prototype.children.cancion)|e('html_attr') }}">
+            {% for cancionForm in form.playlistCanciones %}
+                <div class="cancion-item">
+                    <div class="cancion-content">
+                        {{ form_widget(cancionForm.cancion, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <button type="button" class="btn-eliminar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <button type="button" class="btn-anadir">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Añadir Canción
+        </button>
+    </div>
+
+    <div class="form-footer">
+        <button type="submit" class="btn-guardar">Guardar Playlist</button>
+    </div>
+{{ form_end(form) }}
+
+<style>
+
+body{
+    background-color:#121212;
+    color:white;
+}
+/* Estilos profesionales */
+.form-profesional {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    background-color:#555555;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.form-header h2 {
+    color: yellow;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.form-row {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+}
+
+.form-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #121212;
+    border-radius: 8px;
+}
+
+.form-section h3 {
+    color: yellow;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.cancion-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.cancion-content {
+    flex-grow: 1;
+}
+
+.btn-eliminar {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.btn-eliminar:hover {
+    color: #c0392b;
+}
+
+.btn-anadir {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: yellow;
+    color: black;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-anadir:hover {
+    background: #2980b9;
+}
+
+.btn-guardar {
+    background: yellow;
+    color: black;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.btn-guardar:hover {
+    background:rgb(255, 230, 0);
+}
+
+/* Iconos */
+.feather {
+    vertical-align: middle;
+}
+</style>
+
+<script>
+document.addEventListener('click', function(e) {
+    const list = document.getElementById('canciones');
+    
+    // Añadir canción
+    if (e.target.closest('.btn-anadir')) {
+        const index = list.querySelectorAll('.cancion-item').length;
+        const prototype = list.dataset.prototype;
+        const newForm = prototype.replace(/__name__/g, index);
+        
+        const item = document.createElement('div');
+        item.className = 'cancion-item';
+        item.innerHTML = `
+            <div class="cancion-content">${newForm}</div>
+            <button type="button" class="btn-eliminar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+            </button>
+        `;
+        
+        list.appendChild(item);
+    }
+    
+    // Eliminar canción
+    if (e.target.closest('.btn-eliminar')) {
+        const item = e.target.closest('.cancion-item');
+        item.remove();
+    }
+});
+</script>

@@ -8,6 +8,7 @@ use App\Entity\Perfil;
 use App\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class UsuarioController extends AbstractController
@@ -41,5 +42,19 @@ final class UsuarioController extends AbstractController
             'message' => 'usuario creado!',
             'path' => 'src/Controller/EstiloController.php',
         ]);
+    }
+
+    #[Route('/getSession', name: 'session')]
+    public function session(EntityManagerInterface $e, Request $request){
+        $session=$request->getSession();
+        $email=$session->get('_security.last_username');
+
+        $data=[];
+        $data[]=[
+            'email'=>$email
+        ];
+
+        return $this->json($data);
+
     }
 }
