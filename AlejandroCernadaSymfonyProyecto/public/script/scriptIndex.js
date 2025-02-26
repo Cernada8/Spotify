@@ -384,6 +384,9 @@ fetch('/getSession').then(response => response.json().then(sesion => {
     if(sesion[0].email==null){
         let containerCrearPlaylist=document.getElementById('container-crear-playlist');
         containerCrearPlaylist.style.visibility='hidden';
+
+        let textoTusPlaylist=document.getElementById('textoTusPlaylist');
+        textoTusPlaylist.style.visibility='hidden';
     }
 }))
 
