@@ -239,6 +239,7 @@ buscar.addEventListener('input', () => { //En vez de input, cada vez que pare de
         let buscando = buscar.value.toLowerCase();
         recomendados.innerHTML='';
         playlistsAnadir.innerHTML='';
+        tusPlaylist.innerHTML='';
         if (buscando != "") {
             let yaEnsenadas=[];
 
