@@ -7,6 +7,7 @@ use App\Entity\Estilo;
 use App\Entity\Playlist;
 use App\Entity\Usuario;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -15,8 +16,10 @@ use Symfony\Component\Routing\Attribute\Route;
 final class EstadisticasController extends AbstractController
 {
     #[Route('/estadisticas', name: 'app_estadisticas')]
-    public function index(): Response
+    public function index(LoggerInterface $log): Response
     {
+
+        $log->debug('[' . date('Y-m-d H:i:s') . '] ' . 'El manager ha entrado a ver las estadisticas.');
         return $this->render('estadisticas/index.html.twig', [
             'controller_name' => 'EstadisticasController',
         ]);
@@ -40,7 +43,8 @@ final class EstadisticasController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/manager/estadisticas/usuarioEdad', name: 'usuario_edad')] public function usuarioEdad(EntityManagerInterface $e)
+    #[Route('/manager/estadisticas/usuarioEdad', name: 'usuario_edad')]
+    public function usuarioEdad(EntityManagerInterface $e)
     {
         $usuarioRep = $e->getRepository(Usuario::class);
         $fechas = $usuarioRep->usuarioEdad();
@@ -74,10 +78,10 @@ final class EstadisticasController extends AbstractController
             }
         }
 
-        foreach ($contadorEdades as $rango=>$numero) {
+        foreach ($contadorEdades as $rango => $numero) {
             $data[] = [
-                'rango'=>$rango,
-                'numero'=> $numero
+                'rango' => $rango,
+                'numero' => $numero
             ];
         }
 

@@ -6,6 +6,7 @@ use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Perfil;
 use App\Entity\Usuario;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,9 +46,12 @@ final class UsuarioController extends AbstractController
     }
 
     #[Route('/getSession', name: 'session')]
-    public function session(EntityManagerInterface $e, Request $request){
+    public function session(EntityManagerInterface $e, Request $request, LoggerInterface $log){
         $session=$request->getSession();
         $email=$session->get('_security.last_username');
+
+        $log->debug('[' . date('Y-m-d H:i:s') . '] ' . 'se ha entregado informacion del email: '. $email);
+
 
         $data=[];
         $data[]=[

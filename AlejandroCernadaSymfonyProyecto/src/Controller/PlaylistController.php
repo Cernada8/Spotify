@@ -4,6 +4,7 @@ namespace App\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Playlist;
 use App\Entity\Usuario;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,7 +59,7 @@ final class PlaylistController extends AbstractController
     }
 
     #[Route('/playlist/mostrarPorUsuario', name:'mostrar_playlist_usuario')]
-    public function mostarPorUsuaio(EntityManagerInterface $e, Request $request)
+    public function mostarPorUsuaio(EntityManagerInterface $e, Request $request, LoggerInterface $log)
     {
         $session=$request->getSession();
         $email=$session->get('_security.last_username');
@@ -67,6 +68,8 @@ final class PlaylistController extends AbstractController
 
         $playlistRep = $e->getRepository(Playlist::class);
         $playlists = $playlistRep->mostrarPorUsuario($usuario);
+
+        $log->debug('[' . date('Y-m-d H:i:s') . '] ' . 'se han pedido las playlist que pertenecen a ' .$usuario->getNombre() );
 
         $data=[];
         foreach($playlists as $playlist){

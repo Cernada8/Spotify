@@ -5,6 +5,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Playlist;
 use App\Entity\UsuarioPlaylist;
 use App\Entity\Usuario;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
@@ -21,7 +22,7 @@ final class UsuarioPlaylistController extends AbstractController
     }
 
     #[Route('/usuarioPlaylist/new', name: 'newUsuarioPlaylist')]
-    public function crearEstilo(EntityManagerInterface $e){
+    public function crearEstilo(EntityManagerInterface $e, LoggerInterface $log){
         $usuarioRep=$e->getRepository(Usuario::class);
         $usuario=$usuarioRep->findOneByNombre('Gustavo');
 

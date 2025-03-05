@@ -7,11 +7,7 @@ when@dev:
         handlers:
             main:
                 type: stream
-<<<<<<< HEAD
-                path: "%kernel.logs_dir%/%kernel.environment%.log"
-=======
                 path: "%kernel.logs_dir%/var/log/%kernel.environment%.log"
->>>>>>> 178790b21a37ae7bf3ffad70b2ac7dba00d4b67f
                 level: debug
                 channels: ["!event"]
             # uncomment to get logging in your browser
