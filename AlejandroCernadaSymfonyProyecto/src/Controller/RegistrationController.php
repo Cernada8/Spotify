@@ -22,7 +22,7 @@ class RegistrationController extends AbstractController
     {
         $user = new Usuario();
         
-        $log->debug($user->getNombre(). 'se ha registrado');
+        
 
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -32,6 +32,9 @@ class RegistrationController extends AbstractController
             $user->setRoles($form->get('roles')->getData());
             $entityManager->persist($user);
             $entityManager->flush();
+            
+            $log->debug('[' . date('Y-m-d H:i:s') . '] ' . $user->getNombre() . ' se ha registrado');
+
             return new RedirectResponse('/index.html');
         }
         return $this->render('registration/register.html.twig', [
