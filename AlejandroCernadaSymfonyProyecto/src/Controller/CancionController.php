@@ -73,4 +73,58 @@ final class CancionController extends AbstractController
         return new BinaryFileResponse($ruta);
     }
 
+    #[Route('cancion/sumarLikes/{nombre}', name:'sumar_like')]
+    public function sumarLike(EntityManagerInterface $e, $nombre)
+    {
+        $cancionRep = $e->getRepository(Cancion::class);
+        $cancion=$cancionRep->findOneByTitulo($nombre);
+
+        $cancion->setLikes($cancion->getLikes()+1);
+
+        $e->persist($cancion);
+        $e->flush();
+        $data=[];
+        $data[]=[
+            'likes'=>0
+        ];
+
+        return $this->json($data);
+
+        
+    }
+
+    #[Route('cancion/restarLikes/{nombre}', name:'restar_like')]
+    public function restarLike(EntityManagerInterface $e, $nombre)
+    {
+        $cancionRep = $e->getRepository(Cancion::class);
+        $cancion=$cancionRep->findOneByTitulo($nombre);
+
+        $cancion->setLikes($cancion->getLikes()-1);
+        
+        $e->persist($cancion);
+        $e->flush();
+	$data=[];
+        $data[]=[
+            'likes'=>0
+        ];
+
+        return $this->json($data);
+    }
+
+    #[Route('getLikes/{nombre}', name:'get_like')]
+    public function getLikes(EntityManagerInterface $e, $nombre)
+    {
+        $cancionRep = $e->getRepository(Cancion::class);
+        $cancion=$cancionRep->findOneByTitulo($nombre);
+
+        $likes= $cancion->getLikes();
+        
+        $data=[];
+        $data[]=[
+            'likes'=>$likes
+        ];
+
+        return $this->json($data);
+    }
+
 }
